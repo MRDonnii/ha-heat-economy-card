@@ -1,4 +1,4 @@
-const VERSION = "0.1.1";
+const VERSION = "0.1.2";
 
 class HAHeatEconomyCard extends HTMLElement {
   constructor() {
@@ -118,9 +118,9 @@ class HAHeatEconomyCard extends HTMLElement {
     const spaCost = Number.isFinite(currentPrice) ? currentPrice * (Number(c.spa_kw) || 3.2) : undefined;
 
     this.shadowRoot.innerHTML = `<style>
-      :host{display:block;--good:var(--dashboard-success, var(--success-color, #54d9aa));--warn:var(--dashboard-warning, var(--warning-color, #ffbd59));--danger:var(--dashboard-danger, var(--error-color, #ff667a));--accent:var(--dashboard-accent, var(--primary-color, #62b5ff));--edge:var(--dashboard-border-neutral, var(--divider-color, rgba(127,145,165,.2)))}
+      :host{display:block;--good:var(--dashboard-success, var(--success-color, #54d9aa));--warn:var(--dashboard-warning, var(--warning-color, #ffbd59));--danger:var(--dashboard-danger, var(--error-color, #ff667a));--accent:var(--dashboard-accent, var(--primary-color, #62b5ff));--edge:var(--dashboard-border-neutral, var(--divider-color, rgba(127,145,165,.2)));--card-surface:var(--dashboard-card-bg,var(--ha-card-background,var(--card-background-color,#111820)))}
       *{box-sizing:border-box}
-      ha-card{padding:20px;border-radius:26px;background:linear-gradient(150deg,color-mix(in srgb,var(--card-background-color) 94%,${optimalColor} 6%),var(--card-background-color));border:1px solid var(--edge);color:var(--primary-text-color);box-shadow:var(--ha-card-box-shadow)}
+      ha-card{padding:20px;border-radius:26px;background:linear-gradient(150deg,color-mix(in srgb,${optimalColor} 6%,transparent),transparent 45%),var(--card-surface);border:1px solid var(--edge);color:var(--primary-text-color);box-shadow:var(--ha-card-box-shadow)}
       .head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
       .head strong{font-size:15px}
       .pill{padding:6px 13px;border-radius:999px;font-size:12px;font-weight:800;background:color-mix(in srgb,${optimalColor} 18%,transparent);color:${optimalColor}}
