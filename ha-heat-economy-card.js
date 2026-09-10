@@ -1,4 +1,4 @@
-const VERSION = "0.1.2";
+const VERSION = "0.2.0";
 
 class HAHeatEconomyCard extends HTMLElement {
   constructor() {
@@ -120,13 +120,13 @@ class HAHeatEconomyCard extends HTMLElement {
     this.shadowRoot.innerHTML = `<style>
       :host{display:block;--good:var(--dashboard-success, var(--success-color, #54d9aa));--warn:var(--dashboard-warning, var(--warning-color, #ffbd59));--danger:var(--dashboard-danger, var(--error-color, #ff667a));--accent:var(--dashboard-accent, var(--primary-color, #62b5ff));--edge:var(--dashboard-border-neutral, var(--divider-color, rgba(127,145,165,.2)));--card-surface:var(--dashboard-card-bg,var(--ha-card-background,var(--card-background-color,#111820)))}
       *{box-sizing:border-box}
-      ha-card{padding:20px;border-radius:26px;background:linear-gradient(150deg,color-mix(in srgb,${optimalColor} 6%,transparent),transparent 45%),var(--card-surface);border:1px solid var(--edge);color:var(--primary-text-color);box-shadow:var(--ha-card-box-shadow)}
+      ha-card{padding:20px;border-radius:26px;background:linear-gradient(150deg,color-mix(in srgb,${optimalColor} 6%,transparent),transparent 45%),var(--card-surface);border:var(--ha-card-border-width,1px) solid var(--ha-card-border-color,var(--edge));color:var(--primary-text-color);box-shadow:var(--ha-card-box-shadow)}
       .head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
       .head strong{font-size:15px}
       .pill{padding:6px 13px;border-radius:999px;font-size:12px;font-weight:800;background:color-mix(in srgb,${optimalColor} 18%,transparent);color:${optimalColor}}
       .compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-      .price-box{padding:14px;border:1px solid var(--edge);border-radius:16px;text-align:center;position:relative}
-      .price-box.win{border-color:color-mix(in srgb,var(--good) 55%,var(--edge));background:color-mix(in srgb,var(--good) 8%,transparent)}
+      .price-box{--tone:var(--accent);padding:14px;border:1px solid color-mix(in srgb,var(--tone) 16%,var(--edge));border-left:3px solid var(--tone);border-radius:16px;background:linear-gradient(145deg,color-mix(in srgb,var(--tone) 6%,transparent),transparent 55%);box-shadow:0 4px 12px rgba(0,0,0,.08);text-align:center;position:relative}
+      .price-box.win{--tone:var(--good)}
       .price-box ha-icon{--mdc-icon-size:20px;color:var(--secondary-text-color)}
       .price-box.win ha-icon{color:var(--good)}
       .price-box span{display:block;margin-top:6px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--secondary-text-color)}
@@ -134,12 +134,12 @@ class HAHeatEconomyCard extends HTMLElement {
       .delta{text-align:center;margin:12px 0;font-size:12px;color:var(--secondary-text-color)}
       .delta b{color:var(--good)}
       .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
-      .stat{padding:10px;border:1px solid var(--edge);border-radius:14px;text-align:center}
+      .stat{padding:10px;border:1px solid color-mix(in srgb,var(--accent) 16%,transparent);border-left:3px solid var(--accent);border-radius:14px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 6%,transparent),transparent 55%);box-shadow:0 4px 12px rgba(0,0,0,.08);text-align:center}
       .stat span{display:block;font-size:9px;color:var(--secondary-text-color);text-transform:uppercase;font-weight:700}
       .stat b{display:block;margin-top:4px;font-size:13px;font-weight:800}
       .section-title{margin:18px 0 8px;color:var(--secondary-text-color);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
       .hours{display:flex;flex-wrap:wrap;gap:6px}
-      .hour-chip{display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 10px;border:1px solid var(--edge);border-radius:12px;background:color-mix(in srgb,var(--good) 6%,transparent)}
+      .hour-chip{display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 10px;border:1px solid color-mix(in srgb,var(--good) 20%,var(--edge));border-left:3px solid var(--good);border-radius:12px;background:color-mix(in srgb,var(--good) 6%,transparent)}
       .hour-chip b{font-size:12px;font-weight:800}
       .hour-chip span{font-size:9px;color:var(--good);font-weight:700}
       .empty-hint{font-size:11px;color:var(--secondary-text-color);padding:8px 0}
