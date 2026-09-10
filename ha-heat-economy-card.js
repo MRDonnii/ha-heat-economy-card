@@ -1,4 +1,4 @@
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 
 class HAHeatEconomyCard extends HTMLElement {
   constructor() {
@@ -118,7 +118,7 @@ class HAHeatEconomyCard extends HTMLElement {
     const spaCost = Number.isFinite(currentPrice) ? currentPrice * (Number(c.spa_kw) || 3.2) : undefined;
 
     this.shadowRoot.innerHTML = `<style>
-      :host{display:block;--good:var(--dashboard-success,#54d9aa);--warn:var(--dashboard-warning,#ffbd59);--danger:var(--dashboard-danger,#ff667a);--accent:var(--dashboard-accent,#62b5ff);--edge:var(--dashboard-border-neutral,rgba(127,145,165,.2))}
+      :host{display:block;--good:var(--dashboard-success, var(--success-color, #54d9aa));--warn:var(--dashboard-warning, var(--warning-color, #ffbd59));--danger:var(--dashboard-danger, var(--error-color, #ff667a));--accent:var(--dashboard-accent, var(--primary-color, #62b5ff));--edge:var(--dashboard-border-neutral, var(--divider-color, rgba(127,145,165,.2)))}
       *{box-sizing:border-box}
       ha-card{padding:20px;border-radius:26px;background:linear-gradient(150deg,color-mix(in srgb,var(--card-background-color) 94%,${optimalColor} 6%),var(--card-background-color));border:1px solid var(--edge);color:var(--primary-text-color);box-shadow:var(--ha-card-box-shadow)}
       .head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
